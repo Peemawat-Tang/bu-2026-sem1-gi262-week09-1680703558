@@ -63,6 +63,24 @@ namespace Assignment
         [TestCase("a", "a", TestName = "ASN01_ReverseString_Single", Description = "Reverse single char")]
         [TestCase("", "", TestName = "ASN01_ReverseString_Empty", Description = "Reverse empty string")]
         [TestCase("12345", "54321", TestName = "ASN01_ReverseString_Numbers", Description = "Reverse numbers")]
+
+
+        public string ASN01_ReverseString(string str)
+        {
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in str)
+            {
+                stack.Push(c);
+            }
+            string result = "";
+
+            while (stack.Count > 0)
+            {
+                result += stack.Pop();
+            }
+            return result;
+        }
+
         public void Test_ASN01_ReverseString(string str, string expected)
         {
             string actual = assignment.ASN01_ReverseString(str);
@@ -78,6 +96,26 @@ namespace Assignment
         [TestCase("abcba", true, TestName = "ASN02_StackPalindrome_Abcba", Description = "Abcba is palindrome")]
         [TestCase("ab", false, TestName = "ASN02_StackPalindrome_Ab", Description = "Ab is not palindrome")]
         [TestCase("aa", true, TestName = "ASN02_StackPalindrome_Aa", Description = "Aa is palindrome")]
+
+        public bool ASN02_StackPalindrome(string str)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            foreach (char c in str)
+            {
+                stack.Push(c);
+            }
+
+            string reversed = "";
+
+            while (stack.Count > 0)
+            {
+                reversed += stack.Pop();
+            }
+
+            return str == reversed;
+        }
+
         public void Test_ASN02_StackPalindrome(string str, bool expected)
         {
             bool actual = assignment.ASN02_StackPalindrome(str);
